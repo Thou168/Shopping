@@ -1,0 +1,2 @@
+include ':app', ':fragmentation_swipeback', ':fragmentation', ':fragmentation_core', ':eventbus_activity_scope', ':SliderImage_TH', ':refresh-header', ':refresh-layout'
+rootProject.name='Shopping'

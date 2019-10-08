@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/fl_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include layout="@layout/toolbar"/>
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartrefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+            <androidx.core.widget.NestedScrollView
+                android:fillViewport="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/slider_image"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="168dp">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/home_head_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </androidx.viewpager.widget.ViewPager>
+
+                    <com.bokor.shopping.adapter.Category.Indicator
+                        android:id="@+id/home_head_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        app:indicator_number="2"
+                        app:indicator_radius="8"
+                        app:indicator_foreColor="@color/app_yellow"
+                        app:indicator_bgColor="@color/bg_common_gray"/>
+                </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

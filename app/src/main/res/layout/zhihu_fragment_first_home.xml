@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/toolbar"/>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smartrefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+            <androidx.core.widget.NestedScrollView
+            android:fillViewport="true"
+            android:id="@+id/nestedScrollview"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include layout="@layout/slider_image"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="168dp">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/home_head_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </androidx.viewpager.widget.ViewPager>
+
+                    <com.bokor.shopping.adapter.Category.Indicator
+                        android:id="@+id/home_head_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        app:indicator_number="2"
+                        app:indicator_radius="8"
+                        app:indicator_foreColor="@color/app_yellow"
+                        app:indicator_bgColor="@color/bg_common_gray"/>
+                </RelativeLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recy"
+                    android:clipChildren="false"
+                    android:paddingLeft="-12dp"
+                    android:paddingRight="-12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="right|bottom"-->
+<!--        android:layout_marginBottom="24dp"-->
+<!--        android:layout_marginRight="24dp"-->
+<!--        android:src="@drawable/ic_home_white_24dp"/>-->
+    </LinearLayout>
+</FrameLayout>
