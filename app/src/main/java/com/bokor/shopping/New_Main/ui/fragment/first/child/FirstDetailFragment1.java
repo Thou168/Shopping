@@ -31,7 +31,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 /**
  * Created on 21/09/19.
  */
-public class FirstDetailFragment1 extends BaseSwipeBackFragment implements RewardedVideoAdListener {
+public class FirstDetailFragment1 extends BaseSwipeBackFragment {
     private static final String ARG_ITEM = "arg_item";
 
     private Article mArticle;
@@ -41,7 +41,6 @@ public class FirstDetailFragment1 extends BaseSwipeBackFragment implements Rewar
     private TextView mTvTitle;
     private FloatingActionButton mFab;
     AdView mAdView;
-    private RewardedVideoAd mRewardedVideoAd;
 
     public static FirstDetailFragment1 newInstance(Article article) {
 
@@ -64,9 +63,6 @@ public class FirstDetailFragment1 extends BaseSwipeBackFragment implements Rewar
         View view = inflater.inflate(R.layout.zhihu_fragment_first_detail, container, false);
         initView(view);
 
-
-        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getContext());
-        mRewardedVideoAd.setRewardedVideoAdListener(this);
 //        MobileAds.initialize(getContext(),"ca-app-pub-9458278303026353/6540203480");
 //        AdView adView = new AdView(getContext());
 //        adView.setAdSize(AdSize.BANNER);
@@ -82,12 +78,7 @@ public class FirstDetailFragment1 extends BaseSwipeBackFragment implements Rewar
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        loadRewardedVideoAd();
         return attachToSwipeBack(view);
-    }
-    private void loadRewardedVideoAd() {
-        mRewardedVideoAd.loadAd("ca-app-pub-9458278303026353/3733629634",
-                new AdRequest.Builder().build());
     }
     private void initView(View view) {
         mToolbar =  view.findViewById(R.id.toolbar);
@@ -106,49 +97,5 @@ public class FirstDetailFragment1 extends BaseSwipeBackFragment implements Rewar
 //                start(CycleFragment.newInstance(1));
 //            }
 //        });
-    }
-
-    @Override
-    public void onRewarded(RewardItem reward) {
-        Toast.makeText(getContext(), "onRewarded! currency: " + reward.getType() + "  amount: " +
-                reward.getAmount(), Toast.LENGTH_SHORT).show();
-        // Reward the user.
-    }
-
-    @Override
-    public void onRewardedVideoAdLeftApplication() {
-        Toast.makeText(getContext(), "onRewardedVideoAdLeftApplication",
-                Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onRewardedVideoAdClosed() {
-        Toast.makeText(getContext(), "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onRewardedVideoAdFailedToLoad(int errorCode) {
-        Toast.makeText(getContext(), "onRewardedVideoAdFailedToLoad", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onRewardedVideoAdLoaded() {
-        mRewardedVideoAd.show();
-        Toast.makeText(getContext(), "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onRewardedVideoAdOpened() {
-        Toast.makeText(getContext(), "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onRewardedVideoStarted() {
-        Toast.makeText(getContext(), "onRewardedVideoStarted", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onRewardedVideoCompleted() {
-        Toast.makeText(getContext(), "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show();
     }
 }
