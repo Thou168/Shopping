@@ -261,7 +261,7 @@ public class FirstHomeFragment extends SupportFragment implements OnRefreshListe
         headPager.addOnPageChangeListener(new ViewPagerListener(headIndicator));
     }
 
-//    @Override
+    //    @Override
 //    public void onRefresh() {
 //        mRefreshLayout.postDelayed(new Runnable() {
 //            @Override

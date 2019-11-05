@@ -64,7 +64,8 @@ public class RecyclerSwipeBackFragment extends BaseSwipeBackFragment {
 
         initView(view);
 
-        return view;
+        return attachToSwipeBack(view);
+//        return view;
     }
 
     private void initView(View view) {

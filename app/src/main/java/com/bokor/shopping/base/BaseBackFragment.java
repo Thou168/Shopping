@@ -11,7 +11,7 @@ import com.bokor.shopping.R;
 import me.bokor.fragmentation_swipeback.SwipeBackFragment;
 
 /**
- * Created by YoKeyword on 16/2/7.
+ * Created on 15/10/19.
  */
 public class BaseBackFragment extends SwipeBackFragment {
     private static final String TAG = "Fragmentation";
@@ -23,7 +23,7 @@ public class BaseBackFragment extends SwipeBackFragment {
     }
 
     protected void initToolbarNav(Toolbar toolbar) {
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+        toolbar.setNavigationIcon(R.drawable.icon_back_left_arrow);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

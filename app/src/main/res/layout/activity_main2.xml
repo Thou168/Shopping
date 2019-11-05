@@ -5,22 +5,28 @@
     android:background="@android:color/transparent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/fl_container"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/bottombar_height"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
-    <com.bokor.shopping.UI.view.BottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/bottombar_height"
-        android:layout_gravity="bottom"/>
+        <FrameLayout
+            android:id="@+id/fl_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottomBar"
+            android:layout_alignParentTop="true" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:background="@drawable/actionbar_shadow_up"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="@dimen/bottombar_height"
-        android:layout_height="wrap_content"/>
+        <com.bokor.shopping.UI.view.BottomBar
+            android:layout_alignParentBottom="true"
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottombar_height"/>
+    </RelativeLayout>
+
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:background="@drawable/actionbar_shadow_up"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_marginBottom="@dimen/bottombar_height"-->
+<!--        android:layout_height="wrap_content"/>-->
 </FrameLayout>

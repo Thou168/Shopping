@@ -10,13 +10,13 @@ import me.bokor.fragmentation_swipeback.SwipeBackFragment;
 
 
 /**
- * Created by YoKeyword on 16/4/21.
+ * Created on 15/10/19.
  */
 public class BaseSwipeBackFragment extends SwipeBackFragment {
 
     protected void _initToolbar(Toolbar toolbar) {
 //        toolbar.setTitle("SwipeBackActivity's Fragment");
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+        toolbar.setNavigationIcon(R.drawable.icon_back_left_arrow);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -7,11 +7,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:fillViewport="true"
     tools:showIn="@layout/fragment_detail">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
@@ -23,13 +24,15 @@
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"
-            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-9458278303026353/6540203480">
+            ads:adUnitId="ca-app-pub-2123636611592840/5484014363">
         </com.google.android.gms.ads.AdView>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

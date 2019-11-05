@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
+import com.bokor.shopping.New_Main.Main2Activity;
 import com.bokor.shopping.New_Main.base.BaseBackFragment;
 import com.bokor.shopping.New_Main.entity.Article;
 import com.bokor.shopping.New_Main.ui.fragment.CycleFragment;
@@ -43,7 +44,6 @@ public class FirstDetailFragment1 extends BaseSwipeBackFragment {
     AdView mAdView;
 
     public static FirstDetailFragment1 newInstance(Article article) {
-
         Bundle args = new Bundle();
         args.putParcelable(ARG_ITEM, article);
         FirstDetailFragment1 fragment = new FirstDetailFragment1();
@@ -54,6 +54,7 @@ public class FirstDetailFragment1 extends BaseSwipeBackFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((Main2Activity)this.getActivity()).setGoneBottom();
         mArticle = getArguments().getParcelable(ARG_ITEM);
     }
 
@@ -63,17 +64,16 @@ public class FirstDetailFragment1 extends BaseSwipeBackFragment {
         View view = inflater.inflate(R.layout.zhihu_fragment_first_detail, container, false);
         initView(view);
 
+//        MobileAds.initialize(getContext(), "ca-app-pub-9458278303026353~4105611830");
 //        MobileAds.initialize(getContext(),"ca-app-pub-9458278303026353/6540203480");
 //        AdView adView = new AdView(getContext());
 //        adView.setAdSize(AdSize.BANNER);
 //        adView.setAdUnitId("ca-app-pub-9458278303026353/6540203480");
-
-//        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
-//            @Override
-//            public void onInitializationComplete(InitializationStatus initializationStatus) {
-//            }
-//        });
-
+        MobileAds.initialize(_mActivity, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
         mAdView = view.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -97,5 +97,11 @@ public class FirstDetailFragment1 extends BaseSwipeBackFragment {
 //                start(CycleFragment.newInstance(1));
 //            }
 //        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        ((Main2Activity)this.getActivity()).setVisiBottom();
+        super.onDestroyView();
     }
 }

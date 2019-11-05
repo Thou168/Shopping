@@ -19,6 +19,8 @@ import com.bokor.shopping.New_Main.event.TabSelectedEvent;
 import com.bokor.shopping.New_Main.listener.OnItemClickListener;
 import com.bokor.shopping.New_Main.ui.fragment.second.child.DetailFragment;
 import com.bokor.shopping.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -39,6 +41,8 @@ public class FirstPagerFragment extends SupportFragment implements SwipeRefreshL
     private int mScrollTotal;
     private String[] mTitles;
     private String[] mContents;
+
+    private InterstitialAd mInterstitialAd;
 
     public static FirstPagerFragment newInstance() {
 
@@ -68,6 +72,11 @@ public class FirstPagerFragment extends SupportFragment implements SwipeRefreshL
         mRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         mRefreshLayout.setOnRefreshListener(this);
 
+        mInterstitialAd = new InterstitialAd(_mActivity);
+        mInterstitialAd.setAdUnitId("ca-app-pub-2123636611592840/3351022654");
+//        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
         mAdapter = new HomeAdapter(_mActivity);
         LinearLayoutManager manager = new LinearLayoutManager(_mActivity);
         mRecy.setLayoutManager(manager);
@@ -79,12 +88,13 @@ public class FirstPagerFragment extends SupportFragment implements SwipeRefreshL
                 // The DetailFragment here is in the flow package.
                 // Here is the parent Fragment startup, pay attention to the stack level
                 ((SupportFragment) getParentFragment()).start(DetailFragment.newInstance(mAdapter.getItem(position).getTitle()));
+                mInterstitialAd.show();
             }
         });
 
         // Init Datas
         List<Article> articleList = new ArrayList<>();
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 30; i++) {
             int index = (int) (Math.random() * 3);
             Article article = new Article(mTitles[index], mContents[index]);
             articleList.add(article);

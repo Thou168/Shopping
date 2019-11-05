@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.bokor.shopping.New_Main.base.BaseMainFragment;
 import com.bokor.shopping.New_Main.event.TabSelectedEvent;
@@ -62,10 +63,10 @@ public class Main2Activity extends SupportActivity implements BaseMainFragment.O
         }
         initView();
     }
-    private void initView() {
-        mBottomBar = (BottomBar) findViewById(R.id.bottomBar);
 
-        mBottomBar.addItem(new BottomBarTab(this, R.drawable.png_home, getString(R.string.bottombar_home)))
+    private void initView() {
+        mBottomBar = findViewById(R.id.bottomBar);
+        mBottomBar.addItem(new BottomBarTab(this, R.drawable.icon_home, getString(R.string.bottombar_home)))
                 .addItem(new BottomBarTab(this, R.drawable.png_camera, getString(R.string.bottombar_post)))
                 .addItem(new BottomBarTab(this, R.drawable.png_account, getString(R.string.bottombar_account)))
                 .addItem(new BottomBarTab(this, R.drawable.png_account, getString(R.string.bottombar_more)));
@@ -73,6 +74,8 @@ public class Main2Activity extends SupportActivity implements BaseMainFragment.O
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position, int prePosition) {
+//                if (position == 3)
+//                    setGoneBottom();
                 showHideFragment(mFragments[position], mFragments[prePosition]);
             }
 
@@ -111,6 +114,7 @@ public class Main2Activity extends SupportActivity implements BaseMainFragment.O
             }
         });
     }
+
     @Override
     public void onBackPressedSupport() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
@@ -118,6 +122,12 @@ public class Main2Activity extends SupportActivity implements BaseMainFragment.O
         } else {
             ActivityCompat.finishAfterTransition(this);
         }
+    }
+    public void setVisiBottom(){
+        mBottomBar.setVisibility(View.VISIBLE);
+    }
+    public void setGoneBottom(){
+        mBottomBar.setVisibility(View.GONE);
     }
     //Animation fragment
 //    @Override

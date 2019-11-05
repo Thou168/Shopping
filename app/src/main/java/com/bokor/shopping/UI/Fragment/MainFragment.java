@@ -69,9 +69,8 @@ public class MainFragment extends SupportFragment {
 
     private void initView(View view) {
         mBottomBar = view.findViewById(R.id.bottomBar);
-
         mBottomBar
-                .addItem(new BottomBarTab(_mActivity, R.drawable.png_home, getString(R.string.bottombar_home)))
+                .addItem(new BottomBarTab(_mActivity, R.drawable.icon_home, getString(R.string.bottombar_home)))
                 .addItem(new BottomBarTab(_mActivity, R.drawable.png_camera, getString(R.string.bottombar_post)))
                 .addItem(new BottomBarTab(_mActivity, R.drawable.png_account, getString(R.string.bottombar_account)));
 

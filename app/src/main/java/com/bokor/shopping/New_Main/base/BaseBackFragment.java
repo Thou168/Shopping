@@ -14,7 +14,7 @@ import me.bokor.fragmentation.SupportFragment;
 public class BaseBackFragment extends SupportFragment {
 
     protected void initToolbarNav(Toolbar toolbar) {
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+        toolbar.setNavigationIcon(R.drawable.icon_back_left_arrow);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

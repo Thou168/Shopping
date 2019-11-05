@@ -12,14 +12,12 @@ import com.bokor.shopping.New_Main.ui.fragment.first.child.FirstHomeFragment;
 import com.bokor.shopping.R;
 
 /**
- * Created by YoKeyword on 16/6/3.
+ * Created by  on 8/10/2019.
  */
 public class ZhihuFirstFragment extends BaseMainFragment {
 
     public static ZhihuFirstFragment newInstance() {
-
         Bundle args = new Bundle();
-
         ZhihuFirstFragment fragment = new ZhihuFirstFragment();
         fragment.setArguments(args);
         return fragment;
@@ -35,7 +33,6 @@ public class ZhihuFirstFragment extends BaseMainFragment {
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-
         if (findChildFragment(FirstHomeFragment.class) == null) {
             loadRootFragment(R.id.fl_first_container, FirstHomeFragment.newInstance());
         }

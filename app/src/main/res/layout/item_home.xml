@@ -17,14 +17,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hot_news"
             android:textColor="#9c9c9c"
             android:textSize="13sp"/>
-
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
@@ -33,10 +31,18 @@
             android:layout_marginTop="8dp"
             android:textColor="@android:color/black"
             android:textSize="16sp"/>
-
         <TextView
             android:id="@+id/tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-2123636611592840/5484014363">
+        </com.google.android.gms.ads.AdView>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
