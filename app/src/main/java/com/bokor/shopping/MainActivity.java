@@ -84,14 +84,14 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
 //
 //                // 如果不在该类别Fragment的主页,则回到主页;
 //                if (count > 1) {
-//                    if (currentFragment instanceof ZhihuFirstFragment) {
-//                        currentFragment.popToChild(ZhihuFirstFragment.class, false);
-//                    } else if (currentFragment instanceof ZhihuFirstFragment) {
-//                        currentFragment.popToChild(ZhihuFirstFragment.class, false);
-//                    } else if (currentFragment instanceof ZhihuFirstFragment) {
-//                        currentFragment.popToChild(ZhihuFirstFragment.class, false);
-//                    } else if (currentFragment instanceof ZhihuFirstFragment) {
-//                        currentFragment.popToChild(ZhihuFirstFragment.class, false);
+//                    if (currentFragment instanceof MainHome) {
+//                        currentFragment.popToChild(MainHome.class, false);
+//                    } else if (currentFragment instanceof MainHome) {
+//                        currentFragment.popToChild(MainHome.class, false);
+//                    } else if (currentFragment instanceof MainHome) {
+//                        currentFragment.popToChild(MainHome.class, false);
+//                    } else if (currentFragment instanceof MainHome) {
+//                        currentFragment.popToChild(MainHome.class, false);
 //                    }
 //                    return;
 //                }

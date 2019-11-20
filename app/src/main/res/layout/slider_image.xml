@@ -5,13 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.example.library.sliderimage.SliderLayout
-        android:id="@+id/slider_image"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:moveSpeed="1.8"
-        app:itemSpace="30"
-        app:autoPlaying="true"
-        app:centerScale="1.4"/>
+<!--    <com.example.library.sliderimage.SliderLayout-->
+<!--        android:id="@+id/slider_image"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150dp"-->
+<!--        app:moveSpeed="1.8"-->
+<!--        app:itemSpace="30"-->
+<!--        app:autoPlaying="true"-->
+<!--        app:centerScale="1.4"/>-->
+    <cn.bingoogolapple.bgabanner.BGABanner
+        android:id="@+id/banner_slider"
+        style="@style/BannerDefaultStyle"
+        app:banner_indicatorGravity="bottom|right"
+        app:banner_isNeedShowIndicatorOnOnlyOnePage="true"
+        app:banner_isNumberIndicator="true"
+       app:banner_numberIndicatorTextColor="@android:color/white"
+        app:banner_numberIndicatorTextSize="10sp"
+        app:banner_pointAutoPlayAble="true"
+        app:banner_aspectRatio="2.8" />
 
 </LinearLayout>

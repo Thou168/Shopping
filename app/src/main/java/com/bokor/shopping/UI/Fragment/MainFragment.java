@@ -97,7 +97,7 @@ public class MainFragment extends SupportFragment {
 
             @Override
             public void onTabReselected(int position) {
-                //Received in FirstPagerFragment, FirstHomeFragment, because it is a nested Fragment
+                //Received in FirstPagerFragment, Home, because it is a nested Fragment
                 //Mainly for interaction: re-select tabs. Move to the top if the list is not at the top, or refresh if it is already at the top
                 getDefault(_mActivity).post(new TabSelectedEvent(position));
             }

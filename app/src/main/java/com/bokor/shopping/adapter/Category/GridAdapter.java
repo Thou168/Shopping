@@ -45,8 +45,8 @@ public class GridAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         @SuppressLint("ViewHolder") View mView = LayoutInflater.from(mContext).inflate(R.layout.item_gridview, null);
-        ImageView gridIcon = (ImageView) mView.findViewById(R.id.grid_icon);
-        TextView gridTitle = (TextView) mView.findViewById(R.id.grid_title);
+        ImageView gridIcon = mView.findViewById(R.id.grid_icon);
+        TextView gridTitle = mView.findViewById(R.id.grid_title);
 
         gridIcon.setImageResource(mData.get(i).getGridIcon());
         gridTitle.setText(mData.get(i).getGridTitle());
