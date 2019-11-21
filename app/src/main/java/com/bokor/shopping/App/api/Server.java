@@ -1,0 +1,29 @@
+package com.bokor.shopping.App.api;
+
+import com.bokor.shopping.App.sliderimage.model.BannerModel;
+import com.bokor.shopping.App.sliderimage.model.RefreshModel;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Url;
+
+
+/**
+ * 作者:王浩 邮件:bingoogolapple@gmail.com
+ * 创建时间:15/9/17 下午12:44
+ * 描述:
+ */
+public interface Server {
+
+    @GET("/bestdeal/")
+    Call<AllResponse> getBestdeal();
+
+    @GET("allposts/")
+    Call<AllResponse> getAllPost();
+
+    @GET
+    Call<List<RefreshModel>> loadContentData(@Url String url);
+}

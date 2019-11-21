@@ -21,6 +21,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bokor.shopping.App.Main2Activity;
 import com.bokor.shopping.App.adapter.FirstHomeAdapter;
+import com.bokor.shopping.App.api.AllResponse;
+import com.bokor.shopping.App.api.Server;
+import com.bokor.shopping.App.api.URL;
+import com.bokor.shopping.App.entity.Item;
 import com.bokor.shopping.App.listener.Engine;
 import com.bokor.shopping.App.entity.Article;
 import com.bokor.shopping.App.event.TabSelectedEvent;
@@ -71,6 +75,8 @@ public class Home extends SupportFragment implements OnRefreshListener,BGABanner
     private List<HomeGridInfo> pageTwoData = new ArrayList<>();
     private List<View> mViewList = new ArrayList<>();
 
+    private List<Item> list;
+
     private String[] mTitles = new String[]{
             "Use imagery to express a distinctive voice and exemplify creative excellence.",
             "An image that tells a story is infinitely more interesting and informative.",
@@ -98,6 +104,9 @@ public class Home extends SupportFragment implements OnRefreshListener,BGABanner
         initView(view);
         SliderImage(view);
         Category(view);
+
+        getAllPost();
+
         return view;
     }
 
@@ -159,13 +168,13 @@ public class Home extends SupportFragment implements OnRefreshListener,BGABanner
         });
 
         // Init Datas
-        List<Article> articleList = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            int index = i % 5;
-            Article article = new Article(mTitles[index], mImgRes[index]);
-            articleList.add(article);
-        }
-        mAdapter.setDatas(articleList);
+//        List<Item> articleList = new ArrayList<>();
+//        for (int i = 0; i < 8; i++) {
+//            int index = i % 5;
+////            Item article = new Article(mTitles[index], mImgRes[index]);
+////            articleList.add(article);
+//        }
+//        mAdapter.setDatas(articleList);
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
@@ -300,6 +309,26 @@ public class Home extends SupportFragment implements OnRefreshListener,BGABanner
         headPager.addOnPageChangeListener(new ViewPagerListener(headIndicator));
     }
 
+    private void getAllPost(){
+        Server server = URL.getClient().create(Server.class);
+        Call<AllResponse> call = server.getAllPost();
+        call.enqueue(new Callback<AllResponse>() {
+            @Override
+            public void onResponse(Call<AllResponse> call, Response<AllResponse> response) {
+                if (!response.isSuccessful()){
+                    Log.d("1222222222222221", String.valueOf(response.code()));
+                }
+                list = response.body().getresults();
+                mAdapter.setDatas(list);
+                Log.e("666666666666",String.valueOf(list.size()));
+            }
+
+            @Override
+            public void onFailure(Call<AllResponse> call, Throwable t) {
+                Log.e("OnFailure",t.getMessage());
+            }
+        });
+    }
     //    @Override
 //    public void onRefresh() {
 //        mRefreshLayout.postDelayed(new Runnable() {
@@ -345,7 +374,7 @@ public class Home extends SupportFragment implements OnRefreshListener,BGABanner
 
     @Override
     public void onBannerItemClick(BGABanner banner, ImageView itemView, @Nullable String model, int position) {
-
+        Toast.makeText(_mActivity,"Click item "+ position,Toast.LENGTH_SHORT).show();
     }
 
     @Override

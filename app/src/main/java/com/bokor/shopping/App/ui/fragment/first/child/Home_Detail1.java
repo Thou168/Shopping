@@ -1,6 +1,7 @@
 package com.bokor.shopping.App.ui.fragment.first.child;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.bokor.shopping.App.Main2Activity;
 import com.bokor.shopping.App.entity.Article;
+import com.bokor.shopping.App.entity.Item;
 import com.bokor.shopping.App.ui.fragment.fragment_swipe_back.BaseSwipeBackFragment;
 import com.bokor.shopping.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -28,7 +32,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class Home_Detail1 extends BaseSwipeBackFragment {
     private static final String ARG_ITEM = "arg_item";
 
-    private Article mArticle;
+    private Item item;
 
     private Toolbar mToolbar;
     private ImageView mImgDetail;
@@ -36,9 +40,9 @@ public class Home_Detail1 extends BaseSwipeBackFragment {
     private FloatingActionButton mFab;
     AdView mAdView;
 
-    public static Home_Detail1 newInstance(Article article) {
+    public static Home_Detail1 newInstance(Item item) {
         Bundle args = new Bundle();
-        args.putParcelable(ARG_ITEM, article);
+        args.putParcelable(ARG_ITEM, item);
         Home_Detail1 fragment = new Home_Detail1();
         fragment.setArguments(args);
         return fragment;
@@ -48,7 +52,7 @@ public class Home_Detail1 extends BaseSwipeBackFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((Main2Activity)this.getActivity()).setGoneBottom();
-        mArticle = getArguments().getParcelable(ARG_ITEM);
+        item = getArguments().getParcelable(ARG_ITEM);
     }
 
     @Nullable
@@ -81,8 +85,10 @@ public class Home_Detail1 extends BaseSwipeBackFragment {
 
         mToolbar.setTitle("");
         _initToolbar(mToolbar);
-        mImgDetail.setImageResource(mArticle.getImgRes());
-        mTvTitle.setText(mArticle.getTitle());
+//        mImgDetail.setImageResource(item.getImgRes());
+        Glide.with(_mActivity).load(item.getFront_image_path()).apply(new RequestOptions().placeholder(R.drawable.bg_fifth)).into(mImgDetail);
+
+        mTvTitle.setText(item.getPost_sub_title());
 
 //        mFab.setOnClickListener(new View.OnClickListener() {
 //            @Override

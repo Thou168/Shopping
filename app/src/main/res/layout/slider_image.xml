@@ -21,7 +21,6 @@
         app:banner_isNumberIndicator="true"
        app:banner_numberIndicatorTextColor="@android:color/white"
         app:banner_numberIndicatorTextSize="10sp"
-        app:banner_pointAutoPlayAble="true"
-        app:banner_aspectRatio="2.8" />
+        app:banner_pointAutoPlayAble="true" />
 
 </LinearLayout>

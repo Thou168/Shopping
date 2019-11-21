@@ -12,8 +12,11 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bokor.shopping.App.entity.Article;
+import com.bokor.shopping.App.entity.Item;
 import com.bokor.shopping.App.listener.OnItemClickListener;
 import com.bokor.shopping.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +25,15 @@ import java.util.List;
  * Created on 20/09/2019.
  */
 public class FirstHomeAdapter extends RecyclerView.Adapter<FirstHomeAdapter.VH> {
-    private List<Article> mItems = new ArrayList<>();
+    private List<Item> mItems = new ArrayList<>();
     private LayoutInflater mInflater;
+    private Context mContext;
 
     private OnItemClickListener mClickListener;
 
     public FirstHomeAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
+        mContext = context;
     }
 
     @NonNull
@@ -50,7 +55,7 @@ public class FirstHomeAdapter extends RecyclerView.Adapter<FirstHomeAdapter.VH> 
 
     @Override
     public void onBindViewHolder(VH holder, int position) {
-        Article item = mItems.get(position);
+        Item item = mItems.get(position);
 
         /* Set each image view with a different Transition name to prevent multiple identical names in one view, causing confusion when transforming
          Fragment supports multiple View transformations. When using adapters, you need to distinguish
@@ -58,11 +63,12 @@ public class FirstHomeAdapter extends RecyclerView.Adapter<FirstHomeAdapter.VH> 
         ViewCompat.setTransitionName(holder.img, String.valueOf(position) + "_image");
         ViewCompat.setTransitionName(holder.tvTitle, String.valueOf(position) + "_tv");
 
-        holder.img.setImageResource(item.getImgRes());
-        holder.tvTitle.setText(item.getTitle());
+//        holder.img.setImageResource(item.getFront_image_path());
+        Glide.with(mContext).load(item.getFront_image_path()).apply(new RequestOptions().placeholder(R.drawable.bg_fifth)).into(holder.img);
+        holder.tvTitle.setText(item.getPost_sub_title());
     }
 
-    public void setDatas(List<Article> items) {
+    public void setDatas(List<Item> items) {
         mItems.clear();
         mItems.addAll(items);
     }
@@ -72,7 +78,7 @@ public class FirstHomeAdapter extends RecyclerView.Adapter<FirstHomeAdapter.VH> 
         return mItems.size();
     }
 
-    public Article getItem(int position) {
+    public Item getItem(int position) {
         return mItems.get(position);
     }
 

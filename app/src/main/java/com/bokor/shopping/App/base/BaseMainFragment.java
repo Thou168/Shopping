@@ -7,8 +7,7 @@ import com.bokor.shopping.App.ui.fragment.first.MainHome;
 import me.bokor.fragmentation.SupportFragment;
 
 /**
- * 懒加载
- * Created by YoKeyword on 16/6/5.
+ * 16/6/5.
  */
 public abstract class BaseMainFragment extends SupportFragment {
     protected OnBackToFirstListener _mBackToFirstListener;

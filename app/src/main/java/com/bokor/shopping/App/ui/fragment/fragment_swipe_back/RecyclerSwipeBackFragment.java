@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bokor.shopping.App.adapter.FirstHomeAdapter;
 import com.bokor.shopping.App.entity.Article;
+import com.bokor.shopping.App.entity.Item;
 import com.bokor.shopping.App.listener.OnItemClickListener;
 import com.bokor.shopping.App.ui.fragment.first.child.Home_Detail1;
 import com.bokor.shopping.R;
@@ -120,13 +121,13 @@ public class RecyclerSwipeBackFragment extends BaseSwipeBackFragment {
 //            items.add(item);
 //        }
         // Init Datas
-        List<Article> articleList = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            int index = i % 5;
-            Article article = new Article(mTitles[index], mImgRes[index]);
-            articleList.add(article);
-        }
-        mAdapter.setDatas(articleList);
+//        List<Item> articleList = new ArrayList<>();
+//        for (int i = 0; i < 8; i++) {
+//            int index = i % 5;
+//            Article article = new Article(mTitles[index], mImgRes[index]);
+//            articleList.add(article);
+//        }
+//        mAdapter.setDatas(articleList);
 //        mAdapter.setDatas(items);
     }
 }
